@@ -1,0 +1,10 @@
+POST http://localhost:3001/shorten
+Content-Type: application/json
+
+{
+  "url":"https://www.twitter.com"
+}
+
+###
+
+GET http://localhost:3001/expand/386cb0
