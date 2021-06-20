@@ -18,11 +18,14 @@ app.use(express.json());
 app.use(requestLogger);
 
 app.post("/shorten", (req, res, next) => {
-  const body = req.body;
   const uuid = crypto.randomBytes(3).toString("hex");
-
+  let url = req.body.url;
+  let regexp = new RegExp("^https?://");
+  if (!regexp.test(url)) {
+    url = "http://" + url;
+  }
   const urlObject = new UrlObject({
-    url: body.url,
+    url: url,
     uuid: uuid,
   });
 
