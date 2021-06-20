@@ -5,7 +5,9 @@
   "license": "MIT",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "ui:build": "rm -rf build && cd ../url-shortener-frontend && yarn run build && cp -r build ../url-shortener-node",
+    "deploy:full": "yarn run ui:build && git add . && git commit -m uibuild && git push origin main"
   },
   "dependencies": {
     "cors": "^2.8.5",
